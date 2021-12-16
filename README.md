@@ -11,12 +11,18 @@ In short, compile the library:
 gianluca@sid:~/libprocesshider$ make
 gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 gianluca@sid:~/libprocesshider$ sudo mv libprocesshider.so /usr/local/lib/
+
 ```
 
 Load it with the global dynamic linker
 
 ```
 root@sid:~# echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
+```
+
+Better way:
+```
+export LD_PRELOAD=${PWD}/libprocesshider.so
 ```
 
 And your process will be off the radar 
